@@ -3,16 +3,19 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Date;
+
 public class Main {
     private static SessionFactory sessionFactory = null;
 
     public static void main(String[] args) {
         sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
-//        Transaction tx = session.beginTransaction();
-//        session.save();
-//        tx.commit();
-//        session.close();
+        Warehouse testWarehouse = new Warehouse("Magazyn A", new Date());
+        Transaction tx = session.beginTransaction();
+        session.save(testWarehouse);
+        tx.commit();
+        session.close();
     }
 
     private static SessionFactory getSessionFactory() {
