@@ -1,0 +1,20 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="show_sql">false</property>
+        <property name="dialect">org.hibernate.dialect.SQLiteDialect</property>
+        <!--        <property name="dialect">app.sqlite.SQLiteDialect</property>-->
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:data-test.db</property>
+        <property name="connection.username"></property>
+        <property name="connection.password"></property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="Departure"/>
+        <mapping class="Vehicle"/>
+        <mapping class="Driver"/>
+        <mapping class="Warehouse"/>
+    </session-factory>
+</hibernate-configuration>

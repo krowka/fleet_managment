@@ -27,6 +27,14 @@ public class Vehicle {
     public Vehicle() {
     }
 
+    public String getType () {
+        return this.type;
+    }
+
+    public int getId () {
+        return this.id;
+    }
+
     public Vehicle(String type, int driverSeats, Warehouse startLocalization, Date buyDate) {
         this.type = type;
         this.driverSeats = driverSeats;

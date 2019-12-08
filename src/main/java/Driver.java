@@ -27,6 +27,14 @@ public class Driver {
     public Driver() {
     }
 
+    public String getName () {
+        return this.name;
+    }
+
+    public int getId () {
+        return this.id;
+    }
+
     public Driver(String name, String surname, Warehouse startLocalization, Date hireDate) {
         this.name = name;
         this.surname = surname;

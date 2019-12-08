@@ -41,6 +41,10 @@ public class Departure {
     public Departure() {
     }
 
+    public int getId () {
+        return this.id;
+    }
+
     public Departure(Date startDate, Date endDate, Warehouse departureFrom, Warehouse departureTo, Vehicle vehicle, Date createDate, List<Driver> drivers) {
         this.startDate = startDate;
         this.endDate = endDate;

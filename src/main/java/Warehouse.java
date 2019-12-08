@@ -27,6 +27,14 @@ public class Warehouse {
     public Warehouse() {
     }
 
+    public String getName () {
+        return this.name;
+    }
+
+    public int getId () {
+        return this.id;
+    }
+
     public Warehouse(String name, Date openDate) {
         this.name = name;
         this.openDate = openDate;
