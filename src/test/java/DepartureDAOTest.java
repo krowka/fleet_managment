@@ -1,5 +1,4 @@
 
-import org.hibernate.ObjectNotFoundException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,7 +23,7 @@ public class DepartureDAOTest {
 
 
     @Test
-    public void saveWarehouseTest() {
+    public void saveDepartureTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
         Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
         Departure departure = new Departure(new Date(), new Date(), warehouse, warehouse, vehicle, new Date(), null);
@@ -40,24 +39,6 @@ public class DepartureDAOTest {
     }
 
 
-//    @Test(expected = ObjectNotFoundException.class)
-//    public void getDepartureExceptionTest() {
-//        Warehouse warehouse = new Warehouse("test", new Date());
-//        Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
-//        Departure departure = new Departure(new Date(), new Date(), warehouse, warehouse, vehicle, new Date(), null);
-//        WarehouseDAO warehouseDAO = new WarehouseDAO();
-//        VehicleDAO vehicleDAO = new VehicleDAO();
-//        warehouseDAO.save(warehouse);
-//        vehicleDAO.save(vehicle);
-//
-//        departureDAO.save(departure);
-//
-//        Departure check = departureDAO.get(departure.getId());
-//        Assert.assertEquals(departure.getId(), check.getId());
-//
-//        departureDAO.get(warehouse.getId() + 10).getVehicle();
-//    }
-////
     @Test
     public void getDepartureTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
@@ -85,6 +66,14 @@ public class DepartureDAOTest {
 
     @Test
     public void removeNonExistingDepartureTest() {
+
+        boolean removed = departureDAO.remove(-1);
+
+        Assert.assertFalse(removed);
+    }
+
+    @Test
+    public void removeExistingDepartureTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
         Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
         Departure departure = new Departure(new Date(), new Date(), warehouse, warehouse, vehicle, new Date(), null);
@@ -95,25 +84,9 @@ public class DepartureDAOTest {
 
         departureDAO.save(departure);
 
-        boolean removed = warehouseDAO.remove(departure.getId() + 100);
+        boolean removed = departureDAO.remove(departure.getId());
 
-        Assert.assertFalse(removed);
+        Assert.assertTrue(removed);
     }
 
-//    @Test(expected = ObjectNotFoundException.class)
-//    public void removeExistingWarehouseTest() {
-//        Warehouse warehouse = new Warehouse("test", new Date());
-//        Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
-//        Departure departure = new Departure(new Date(), new Date(), warehouse, warehouse, vehicle, new Date(), null);
-//        WarehouseDAO warehouseDAO = new WarehouseDAO();
-//        VehicleDAO vehicleDAO = new VehicleDAO();
-//        warehouseDAO.save(warehouse);
-//        vehicleDAO.save(vehicle);
-//
-//        departureDAO.save(departure);
-//        boolean removed = departureDAO.remove(departure.getId());
-//
-//        Assert.assertTrue(removed);
-//        departureDAO.get(departure.getId()).getVehicle();
-//    }
 }

@@ -1,6 +1,5 @@
 import java.util.Date;
 
-import org.hibernate.ObjectNotFoundException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,7 +21,6 @@ public class DriverDAOTest {
     }
 
 
-
     @Test
     public void saveDriverTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
@@ -34,7 +32,6 @@ public class DriverDAOTest {
         Driver check = driverDAO.get(driver.getId());
         Assert.assertEquals(driver.getId(), check.getId());
     }
-
 
 
     @Test
@@ -57,18 +54,14 @@ public class DriverDAOTest {
         Assert.assertNotEquals(check2.getId(), driver1.getId());
     }
 
+
     @Test
     public void removeNonExistingDriverTest() {
-        Warehouse warehouse = new Warehouse("test", new Date());
-        Driver driver = new Driver("name", "surname", warehouse, new Date());
-        WarehouseDAO warehouseDAO = new WarehouseDAO();
-        warehouseDAO.save(warehouse);
-        driverDAO.save(driver);
-
-        boolean removed = driverDAO.remove(driver.getId() + 10);
+        boolean removed = driverDAO.remove(-1);
 
         Assert.assertFalse(removed);
     }
+
 
     @Test
     public void removeExistingDriverTest() {
@@ -82,5 +75,4 @@ public class DriverDAOTest {
 
         Assert.assertTrue(removed);
     }
-
 }

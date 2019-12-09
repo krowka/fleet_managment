@@ -1,6 +1,5 @@
 import java.util.Date;
 
-import org.hibernate.ObjectNotFoundException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,8 +20,6 @@ public class VehicleDAOTest {
         vehicleDAO = null;
     }
 
-
-
     @Test
     public void saveVehicleTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
@@ -33,17 +30,6 @@ public class VehicleDAOTest {
 
         Vehicle check = vehicleDAO.get(vehicle.getId());
         Assert.assertEquals(vehicle.getId(), check.getId());
-    }
-
-    @Test(expected = ObjectNotFoundException.class)
-    public void getVehicleExceptionTest() {
-        Warehouse warehouse = new Warehouse("test", new Date());
-        Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
-        WarehouseDAO warehouseDAO = new WarehouseDAO();
-        warehouseDAO.save(warehouse);
-        vehicleDAO.save(vehicle);
-
-        vehicleDAO.get(vehicle.getId() + 10).getCurrentLocalization();
     }
 
     @Test
@@ -67,20 +53,20 @@ public class VehicleDAOTest {
     }
 
     @Test
-    public void removeNonExistingWarehouseTest() {
+    public void removeNonExistingVehicleTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
         Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
         WarehouseDAO warehouseDAO = new WarehouseDAO();
         warehouseDAO.save(warehouse);
         vehicleDAO.save(vehicle);
 
-        boolean removed = vehicleDAO.remove(vehicle.getId() + 10);
+        boolean removed = vehicleDAO.remove(-1);
 
         Assert.assertFalse(removed);
     }
 
     @Test
-    public void removeExistingWarehouseTest() {
+    public void removeExistingVehicleTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
         Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
         WarehouseDAO warehouseDAO = new WarehouseDAO();

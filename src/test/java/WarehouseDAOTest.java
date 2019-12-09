@@ -1,6 +1,5 @@
 import java.util.Date;
 
-import org.hibernate.ObjectNotFoundException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,8 +20,6 @@ public class WarehouseDAOTest {
         warehouseDAO = null;
     }
 
-
-
     @Test
     public void saveWarehouseTest() {
         Warehouse warehouse = new Warehouse("newWarehouse", new Date());
@@ -30,14 +27,6 @@ public class WarehouseDAOTest {
 
         Warehouse check = warehouseDAO.get(warehouse.getId());
         Assert.assertEquals(warehouse.getId(), check.getId());
-    }
-
-    @Test(expected = ObjectNotFoundException.class)
-    public void getWarehouseExceptionTest() {
-        Warehouse warehouse = new Warehouse("test", new Date());
-        warehouseDAO.save(warehouse);
-
-        warehouseDAO.get(warehouse.getId() + 10).getName();
     }
 
     @Test
@@ -59,21 +48,17 @@ public class WarehouseDAOTest {
 
     @Test
     public void removeNonExistingWarehouseTest() {
-        Warehouse warehouse = new Warehouse("Warehouse", new Date());
-        warehouseDAO.save(warehouse);
-
-        boolean removed = warehouseDAO.remove(warehouse.getId() + 1);
+        boolean removed = warehouseDAO.remove(-1);
 
         Assert.assertFalse(removed);
     }
 
-    @Test(expected = ObjectNotFoundException.class)
+    @Test
     public void removeExistingWarehouseTest() {
         Warehouse warehouse = new Warehouse("Warehouse", new Date());
         warehouseDAO.save(warehouse);
         boolean removed = warehouseDAO.remove(warehouse.getId());
 
         Assert.assertTrue(removed);
-        warehouseDAO.get(warehouse.getId()).getName();
     }
 }
