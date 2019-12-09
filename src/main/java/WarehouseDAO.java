@@ -22,19 +22,14 @@ public class WarehouseDAO {
     public Warehouse get(int id) {
         Transaction transaction = null;
         Warehouse warehouse = null;
-        try (Session session = getSessionFactory().openSession()) {
+        Session session = getSessionFactory().openSession();
             // start a transaction
             transaction = session.beginTransaction();
 
             // Obtain an entity using byId() method
             warehouse = session.byId(Warehouse.class).getReference(id);
             transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
+
 
         return warehouse;
     }

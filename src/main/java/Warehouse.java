@@ -1,6 +1,7 @@
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "Warehouses")
 public class Warehouse {
@@ -55,4 +56,30 @@ public class Warehouse {
 //    public List<Vehicle> vehiclesAvailable(Date date) {
 //        return null;
 //    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Warehouse warehouse = (Warehouse) o;
+        return id == warehouse.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Warehouse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", openDate=" + openDate +
+                ", closeDate=" + closeDate +
+                ", vehicles=" + vehicles +
+                ", drivers=" + drivers +
+                '}';
+    }
 }
