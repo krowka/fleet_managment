@@ -1,4 +1,10 @@
 
+import dao.DepartureDao;
+import dao.VehicleDao;
+import dao.WarehouseDao;
+import model.Departure;
+import model.Vehicle;
+import model.Warehouse;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,13 +13,13 @@ import org.junit.Test;
 import java.util.Date;
 
 
-public class DepartureDAOTest {
+public class DepartureDaoTest {
 
-    private DepartureDAO departureDAO;
+    private DepartureDao departureDAO;
 
     @Before
     public void before() {
-        departureDAO = new DepartureDAO();
+        departureDAO = new DepartureDao();
     }
 
     @After
@@ -27,8 +33,8 @@ public class DepartureDAOTest {
         Warehouse warehouse = new Warehouse("test", new Date());
         Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
         Departure departure = new Departure(new Date(), new Date(), warehouse, warehouse, vehicle, new Date(), null);
-        WarehouseDAO warehouseDAO = new WarehouseDAO();
-        VehicleDAO vehicleDAO = new VehicleDAO();
+        WarehouseDao warehouseDAO = new WarehouseDao();
+        VehicleDao vehicleDAO = new VehicleDao();
         warehouseDAO.save(warehouse);
         vehicleDAO.save(vehicle);
 
@@ -42,11 +48,11 @@ public class DepartureDAOTest {
     @Test
     public void getDepartureTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
-        Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
+        Vehicle vehicle = new Vehicle("model.Vehicle", 2, warehouse, new Date());
         Departure departure1 = new Departure(new Date(), new Date(), warehouse, warehouse, vehicle, new Date(), null);
         Departure departure2 = new Departure(new Date(), new Date(), warehouse, warehouse, vehicle, new Date(), null);
-        WarehouseDAO warehouseDAO = new WarehouseDAO();
-        VehicleDAO vehicleDAO = new VehicleDAO();
+        WarehouseDao warehouseDAO = new WarehouseDao();
+        VehicleDao vehicleDAO = new VehicleDao();
         warehouseDAO.save(warehouse);
         vehicleDAO.save(vehicle);
 
@@ -75,10 +81,10 @@ public class DepartureDAOTest {
     @Test
     public void removeExistingDepartureTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
-        Vehicle vehicle = new Vehicle("Vehicle", 2, warehouse, new Date());
+        Vehicle vehicle = new Vehicle("model.Vehicle", 2, warehouse, new Date());
         Departure departure = new Departure(new Date(), new Date(), warehouse, warehouse, vehicle, new Date(), null);
-        WarehouseDAO warehouseDAO = new WarehouseDAO();
-        VehicleDAO vehicleDAO = new VehicleDAO();
+        WarehouseDao warehouseDAO = new WarehouseDao();
+        VehicleDao vehicleDAO = new VehicleDao();
         warehouseDAO.save(warehouse);
         vehicleDAO.save(vehicle);
 

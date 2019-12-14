@@ -1,3 +1,5 @@
+package model;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -45,15 +47,15 @@ public class Warehouse {
         if(this.openDate.compareTo(closeDate) < 0)
             this.closeDate = closeDate;
     }
-//    public List<Vehicle> vehiclesArriving(Date date) {
+//    public List<model.Vehicle> vehiclesArriving(Date date) {
 //        return null;
 //    }
 //
-//    public List<Vehicle> vehiclesDeparting(Date date) {
+//    public List<model.Vehicle> vehiclesDeparting(Date date) {
 //        return null;
 //    }
 //
-//    public List<Vehicle> vehiclesAvailable(Date date) {
+//    public List<model.Vehicle> vehiclesAvailable(Date date) {
 //        return null;
 //    }
 
@@ -73,7 +75,7 @@ public class Warehouse {
 
     @Override
     public String toString() {
-        return "Warehouse{" +
+        return "model.Warehouse{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", openDate=" + openDate +

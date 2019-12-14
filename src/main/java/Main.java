@@ -1,13 +1,21 @@
+import dao.WarehouseDao;
+import model.Warehouse;
+
 import java.util.Date;
 
 public class Main {
 
 
     public static void main(String[] args) {
-        WarehouseDAO persistenceLayer = new WarehouseDAO();
-        Warehouse testWarehouse = new Warehouse("Magazyn A", new Date());
+        WarehouseDao warehouseDao = new WarehouseDao();
+        Warehouse testWarehouse = new Warehouse("WYZIMA PÓŁNOCNA", new Date());
 
-        persistenceLayer.save(testWarehouse);
+        warehouseDao.save(testWarehouse);
+
+        Warehouse gotWarehouse = warehouseDao.get(testWarehouse.getId());
+        System.out.println(gotWarehouse.getName());
+
+        warehouseDao.remove(testWarehouse.getId());
     }
 
 }

@@ -12,9 +12,9 @@
 
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <mapping class="Departure"/>
-        <mapping class="Vehicle"/>
-        <mapping class="Driver"/>
-        <mapping class="Warehouse"/>
+        <mapping class="model.Departure"/>
+        <mapping class="model.Vehicle"/>
+        <mapping class="model.Driver"/>
+        <mapping class="model.Warehouse"/>
     </session-factory>
 </hibernate-configuration>

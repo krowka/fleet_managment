@@ -1,18 +1,20 @@
 import java.util.Date;
 
+import dao.WarehouseDao;
+import model.Warehouse;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 
-public class WarehouseDAOTest {
+public class WarehouseDaoTest {
 
-    private WarehouseDAO warehouseDAO;
+    private WarehouseDao warehouseDAO;
 
     @Before
     public void before() {
-        warehouseDAO = new WarehouseDAO();
+        warehouseDAO = new WarehouseDao();
     }
 
     @After

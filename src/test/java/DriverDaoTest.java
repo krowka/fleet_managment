@@ -1,23 +1,27 @@
 import java.util.Date;
 
+import dao.DriverDao;
+import dao.WarehouseDao;
+import model.Driver;
+import model.Warehouse;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 
-public class DriverDAOTest {
+public class DriverDaoTest {
 
-    private DriverDAO driverDAO;
+    private DriverDao driverDao;
 
     @Before
     public void before() {
-        driverDAO = new DriverDAO();
+        driverDao = new DriverDao();
     }
 
     @After
     public void after() {
-        driverDAO = null;
+        driverDao = null;
     }
 
 
@@ -25,11 +29,11 @@ public class DriverDAOTest {
     public void saveDriverTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
         Driver driver = new Driver("name", "surname", warehouse, new Date());
-        WarehouseDAO warehouseDAO = new WarehouseDAO();
-        warehouseDAO.save(warehouse);
-        driverDAO.save(driver);
+        WarehouseDao warehouseDao = new WarehouseDao();
+        warehouseDao.save(warehouse);
+        driverDao.save(driver);
 
-        Driver check = driverDAO.get(driver.getId());
+        Driver check = driverDao.get(driver.getId());
         Assert.assertEquals(driver.getId(), check.getId());
     }
 
@@ -39,13 +43,13 @@ public class DriverDAOTest {
         Warehouse warehouse = new Warehouse("test", new Date());
         Driver driver1 = new Driver("name", "surname", warehouse, new Date());
         Driver driver2 = new Driver("name", "surname", warehouse, new Date());
-        WarehouseDAO warehouseDAO = new WarehouseDAO();
-        warehouseDAO.save(warehouse);
-        driverDAO.save(driver1);
-        driverDAO.save(driver2);
+        WarehouseDao warehouseDao = new WarehouseDao();
+        warehouseDao.save(warehouse);
+        driverDao.save(driver1);
+        driverDao.save(driver2);
 
-        Driver check1 = driverDAO.get(driver1.getId());
-        Driver check2 = driverDAO.get(driver2.getId());
+        Driver check1 = driverDao.get(driver1.getId());
+        Driver check2 = driverDao.get(driver2.getId());
 
         Assert.assertEquals(check1.getId(), driver1.getId());
         Assert.assertEquals(check2.getId(), driver2.getId());
@@ -57,7 +61,7 @@ public class DriverDAOTest {
 
     @Test
     public void removeNonExistingDriverTest() {
-        boolean removed = driverDAO.remove(-1);
+        boolean removed = driverDao.remove(-1);
 
         Assert.assertFalse(removed);
     }
@@ -67,11 +71,11 @@ public class DriverDAOTest {
     public void removeExistingDriverTest() {
         Warehouse warehouse = new Warehouse("test", new Date());
         Driver driver = new Driver("name", "surname", warehouse, new Date());
-        WarehouseDAO warehouseDAO = new WarehouseDAO();
-        warehouseDAO.save(warehouse);
-        driverDAO.save(driver);
+        WarehouseDao warehouseDao = new WarehouseDao();
+        warehouseDao.save(warehouse);
+        driverDao.save(driver);
 
-        boolean removed = driverDAO.remove(driver.getId());
+        boolean removed = driverDao.remove(driver.getId());
 
         Assert.assertTrue(removed);
     }
