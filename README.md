@@ -1,6 +1,5 @@
-# Technologie Obiektowe 2
-
-# Projekt: System do Zarządzania Flotą.
+## Technologie Obiektowe 2
+## Projekt: System do Zarządzania Flotą.
 
 
 ### Funkcjonalności:
@@ -11,12 +10,11 @@
 - kierowców - historia przejazdów + zaplanowane przejazdy z informacją o pojeździe
 - pojazdów - historia przejazdów + zaplanowane przejazdy z informacją o kierowcy
 - wyjazdach - data rozpoczęcia i zakończenia, jaki kierowca, jaki pojazd skąd, dokąd.
-
 4. Dodawanie obiektów, kierowców, pojazdów.
 5. Zlecanie wyjazdów z informacją: z którego miejsca, jakim pojazdem, jaki kierowca (kierowcy), dokąd, kiedy i czas przejazdu.
 
-### Schemat blokowy projektu:
-
- ![]
+### Schemat UML klas:
+ ![diagram uml](https://github.com/krowka/fleet_managment/blob/master/other%20files/uml_diagram.PNG "Diagram")
+ 
 ### Schemat bazy danych
-![]
+![diagram bazy](https://github.com/krowka/fleet_managment/blob/master/other%20files/baza.PNG "Baza")
